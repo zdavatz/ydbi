@@ -2,7 +2,7 @@ $:.unshift 'lib'
 require 'rake'
 require 'rake/gempackagetask'
 require 'rake/packagetask'
-require 'rake/rdoctask'
+require 'rdoc/task'
 
 DEFAULT_TASKS = [:clobber_package, :package, :gem]
 
@@ -163,11 +163,15 @@ task :distclean => [:clobber_package, :clobber_rdoc]
 task :clean     => [:distclean]
 task :default   => [:test, :dist]
 
+task :to_blog   => [:clobber_rdoc, :rdoc] do
+    sh "rm -r $git/blog/content/docs/ruby-dbi && mv rdoc $git/blog/content/docs/ruby-dbi"
+end
+
 #
 # Documentation
 #
 
-Rake::RDocTask.new do |rd|
+RDoc::Task.new do |rd|
     rd.rdoc_dir = "rdoc"
     rd.rdoc_files.include("./README")
     rd.rdoc_files.include("./ChangeLog")
@@ -175,6 +179,6 @@ Rake::RDocTask.new do |rd|
     rd.rdoc_files.include("./doc/**/*.rdoc")
     rd.rdoc_files.include("./lib/**/*.rb")
     rd.rdoc_files.include("./ext/**/*.c")
-    rd.options = %w(-apMN)
+    rd.options = %w(-aMN)
 end
 
