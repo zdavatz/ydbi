@@ -173,12 +173,13 @@ end
 
 RDoc::Task.new do |rd|
     rd.rdoc_dir = "rdoc"
+    rd.main = "README"
     rd.rdoc_files.include("./README")
     rd.rdoc_files.include("./ChangeLog")
     rd.rdoc_files.include("./LICENSE")
     rd.rdoc_files.include("./doc/**/*.rdoc")
     rd.rdoc_files.include("./lib/**/*.rb")
     rd.rdoc_files.include("./ext/**/*.c")
-    rd.options = %w(-aMN)
+    rd.options = %w(-a)
 end
 
