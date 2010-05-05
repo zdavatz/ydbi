@@ -2,7 +2,7 @@ require 'delegate'
 
 begin
     require 'rubygems'
-    gem 'deprecated'
+    gem 'deprecated', "= 2.0.1"
 rescue LoadError => e
 end
 

@@ -37,7 +37,7 @@ module DBI; end
 
 begin
     require "rubygems"
-    gem "deprecated"
+    gem "deprecated", "= 2.0.1"
 rescue LoadError
 end
 
@@ -90,7 +90,7 @@ Deprecate.set_action(
 
 #++
 module DBI
-    VERSION = "0.4.3"
+    VERSION = "0.4.4"
 
     module DBD # :nodoc:
         API_VERSION = "0.3"
