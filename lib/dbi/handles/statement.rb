@@ -74,7 +74,7 @@ module DBI
             
             coltypes = column_types
 
-            if (pos - 1) < 1
+            if (pos - 1) < 0
                 raise InterfaceError, "bind positions index starting at 1"
             end
 

@@ -76,6 +76,21 @@
             )
             @sth.finish
         end
+        
+        assert_nothing_raised do
+            @sth = @dbh.prepare("select age, name from names order by age")
+            assert(@sth.convert_types) # again
+            @sth.execute
+            @sth.bind_coltype(1, DBI::Type::Varchar)
+            assert_equal(
+                [
+                    ["19", "Joe"], 
+                    ["21", "Bob"],
+                    ["30", "Jim"], 
+                ], @sth.fetch_all
+            )
+            @sth.finish
+        end
 
         # just to be sure..
         assert_nothing_raised do
