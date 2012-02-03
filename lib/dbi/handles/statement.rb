@@ -326,7 +326,7 @@ module DBI
 
             begin
                 while row = fetch do
-                    fetched_rows.push(row)
+                    fetched_rows.push(row.dup)
                 end
             rescue Exception
             end
