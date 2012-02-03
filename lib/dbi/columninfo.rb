@@ -39,7 +39,7 @@ module DBI
             @hash ||= Hash.new
 
             # coerce all strings to symbols
-            @hash.each_key do |x|
+            @hash.keys.each do |x|
                 if x.kind_of? String
                     sym = x.to_sym
                     if @hash.has_key? sym
