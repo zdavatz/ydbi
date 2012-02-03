@@ -217,7 +217,7 @@ module DBI
             def __setobj__(obj)
                 @delegate_dc_obj = @arr = obj
             end
-        else
+        end
             #
             # See Object#clone.
             #
@@ -238,7 +238,6 @@ module DBI
                 row.instance_variable_set :@_dc_obj,       arr
                 row
             end
-        end
 
         private
 
