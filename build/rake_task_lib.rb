@@ -1,6 +1,7 @@
 $:.unshift 'lib'
 require 'rake'
-require 'rake/gempackagetask'
+require 'rubygems'
+require 'rubygems/package_task'
 require 'rake/packagetask'
 require 'rdoc/task'
 
@@ -35,7 +36,7 @@ def package_files(code_files)
 end
 
 def build_package_tasks(spec, code_files)
-    Rake::GemPackageTask.new(spec) do |s|
+    Gem::PackageTask.new(spec) do |s|
     end
 
     Rake::PackageTask.new(spec.name, spec.version) do |p|
