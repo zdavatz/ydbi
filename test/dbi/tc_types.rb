@@ -116,7 +116,7 @@ class TC_DBI_Type < Test::Unit::TestCase
 
         md = "10-11"
 
-        if RUBY_VERSION =~ /^1\.9/
+        if RUBY_VERSION !~ /^1\.8/
             md = "11-10"
         end
 
