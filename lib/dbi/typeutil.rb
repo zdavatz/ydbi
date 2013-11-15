@@ -73,7 +73,7 @@ module DBI
                 DBI::Type::Boolean
             when /^time(?:stamp(?:tz)?)?$/i
                 DBI::Type::Timestamp
-            when /^(?:decimal|numeric)$/i
+            when /^(?:decimal|numeric|double)$/i
                 DBI::Type::Decimal
             else
                 DBI::Type::Varchar
