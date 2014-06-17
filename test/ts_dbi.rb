@@ -3,6 +3,7 @@
 Dir.chdir("..") if File.basename(Dir.pwd) == "test"
 $LOAD_PATH.unshift(Dir.pwd + "/lib")
 Dir.chdir("test") rescue nil
+$: << '.'
 
 require 'dbi/tc_columninfo'
 require 'dbi/tc_date'

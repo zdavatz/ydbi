@@ -1,5 +1,4 @@
 $:.unshift 'build'
-
 if File.exists? 'lib/dbi'
     require 'Rakefile.dbi'
 elsif File.exists? 'lib/dbd'

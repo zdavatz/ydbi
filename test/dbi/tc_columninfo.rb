@@ -39,7 +39,7 @@ class TC_DBI_ColumnInfo < Test::Unit::TestCase
           DBI::ColumnInfo.new({:foo => "bar", :baz => "quux"})
       end
 
-      assert_raises(TypeError) do
+      assert_raises(ArgumentError) do
           DBI::ColumnInfo.new({"foo" => "bar", :foo => "quux"})
       end
    end
