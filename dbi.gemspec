@@ -13,6 +13,9 @@ Gem::Specification.new do |gem|
   gem.test_file     = 'test/ts_dbi.rb'
   gem.executables   = ['dbi', 'test_broken_dbi']
   gem.require_paths = ['lib']
-
+ 
+  gem.add_development_dependency "rake"
+  gem.add_development_dependency "minitest"
+  gem.add_development_dependency "test-unit"
   gem.add_runtime_dependency 'deprecated', '= 2.0.1'
 end
