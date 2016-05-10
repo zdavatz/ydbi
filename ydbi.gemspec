@@ -5,9 +5,9 @@ require 'dbi/version'
 Gem::Specification.new do |gem|
   gem.name          = 'ydbi'
   gem.version       = DBI::VERSION
-  gem.authors       = ['Erik Hollensbe', 'Christopher Maujean']
+  gem.authors       = ['Erik Hollensbe', 'Christopher Maujean', 'Niklaus Giger', 'Zeno Davatz']
   gem.email         = 'zdavatz@ywesee.com'
-  gem.homepage      = 'http://www.rubyforge.org/projects/ruby-dbi'
+  gem.homepage      = 'https://github.com/zdavatz/ydbi'
   gem.summary       = 'A vendor independent interface for accessing databases, similar to Perl\'s DBI'
   gem.description   = 'Branch by ywesee com, as our patches were never accepted by upstream'
   gem.has_rdoc      = true
