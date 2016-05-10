@@ -1,3 +1,7 @@
+## 0.5.1 - 10/05/2016
+
+* dbd-pg gem renamed to ydb-pg which requires gem 'ydbi'
+
 ## 0.5.0 - 10/05/2016
 
 * Gem renamed to ydbi. Some small changes to run under Ruby 2.x
