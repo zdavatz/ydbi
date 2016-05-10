@@ -32,19 +32,19 @@ build_dbi_tasks
 # There's probably a better way to do this, but here's a boilerplate spec that we dup and modify.
 #
 
-task :dbi => DEFAULT_TASKS.collect { |x| "dbi:#{x.to_s}" }
+task :ydbi => DEFAULT_TASKS.collect { |x| "ydbi:#{x.to_s}" }
 
-namespace :dbi do
+namespace :ydbi do
     code_files = %w(examples/**/* bin/dbi build/Rakefile.dbi.rb lib/dbi.rb lib/dbi/**/*.rb test/ts_dbi.rb test/dbi/*)
 
     spec = boilerplate_spec
-    spec.name        = 'dbi'
+    spec.name        = 'ydbi'
     spec.version     = DBI::VERSION
     spec.test_file   = 'test/ts_dbi.rb'
     spec.executables = ['dbi', 'test_broken_dbi']
     spec.files       = gem_files(code_files)
     spec.summary     = 'A vendor independent interface for accessing databases, similar to Perl\'s DBI'
-    spec.description = 'A vendor independent interface for accessing databases, similar to Perl\'s DBI'
+    spec.description = 'Branch by ywesee com, as our patches were never accepted by upstream'
     spec.add_dependency 'deprecated', '= 2.0.1'
 
     build_package_tasks(spec, code_files)

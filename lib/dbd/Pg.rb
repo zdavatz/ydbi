@@ -32,7 +32,7 @@
 begin
     require 'rubygems'
     gem 'pg'
-    gem 'dbi'
+    gem 'ydbi'
 rescue Exception => e
 end
 
@@ -49,7 +49,7 @@ module DBI
         # Only things that extend DBI's results are documented.
         #
         module Pg
-            VERSION          = "0.3.9"
+            VERSION          = "0.5.0"
             DESCRIPTION      = "PostgreSQL DBI DBD"
 
             #

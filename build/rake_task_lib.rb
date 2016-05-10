@@ -40,7 +40,7 @@ def build_package_tasks(spec, code_files)
     Gem::PackageTask.new(spec) do |s|
     end
 
-    Rake::PackageTask.new(spec.name, spec.version) do |p|
+    Rake::PackageTask.new('y'+spec.name, spec.version) do |p|
         p.need_tar_gz = true
         p.need_zip = true
 
@@ -57,19 +57,19 @@ end
 def boilerplate_spec
     gem = Gem::Specification.new 
     gem.authors     = ['Erik Hollensbe', 'Christopher Maujean']
-    gem.email       = 'ruby-dbi-users@rubyforge.org'
-    gem.homepage    = 'http://www.rubyforge.org/projects/ruby-dbi'
+    gem.email       = 'zdavatz@ywesee.com'
+    gem.homepage    = 'https://github.com/zdavatz/ydbi'
     gem.platform    = Gem::Platform::RUBY
     gem.has_rdoc    = true
     gem.extra_rdoc_files = DOC_FILES
     gem.required_ruby_version = '>= 1.8.0'
-    gem.rubyforge_project = 'ruby-dbi'
+    gem.rubyforge_project = 'ydbi'
     return gem
 end
 
 # builds a dbd namespace from the DBD_PACKAGES hash
 def dbd_namespace(dbd)
-    "dbd-" + dbd.to_s.downcase
+    "ydbd-" + dbd.to_s.downcase
 end
 
 def dbd_code_files(dbd)
@@ -97,7 +97,7 @@ def dbd_gem_spec(dbd, dbd_const, code_files)
     spec.files       = gem_files(code_files) 
     spec.summary     = dbd_description(dbd_const)
     spec.description = dbd_description(dbd_const) 
-    spec.add_dependency 'dbi', '>= 0.4.0'
+    spec.add_dependency 'ydbi', '>= 0.5.0'
 
     dcdbd = dbd.downcase
 
@@ -175,8 +175,8 @@ end
 
 RDoc::Task.new do |rd|
     rd.rdoc_dir = "rdoc"
-    rd.main = "README"
-    rd.rdoc_files.include("./README")
+    rd.main = "readme.md"
+    rd.rdoc_files.include("./readme.md")
     rd.rdoc_files.include("./ChangeLog")
     rd.rdoc_files.include("./LICENSE")
     rd.rdoc_files.include("./doc/**/*.rdoc")

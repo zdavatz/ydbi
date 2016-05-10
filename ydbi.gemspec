@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.name          = 'ydbi'
   gem.version       = DBI::VERSION
   gem.authors       = ['Erik Hollensbe', 'Christopher Maujean']
-  gem.email         = 'ruby-dbi-users@rubyforge.org'
+  gem.email         = 'zdavatz@ywesee.com'
   gem.homepage      = 'http://www.rubyforge.org/projects/ruby-dbi'
   gem.summary       = 'A vendor independent interface for accessing databases, similar to Perl\'s DBI'
   gem.description   = 'Branch by ywesee com, as our patches were never accepted by upstream'
