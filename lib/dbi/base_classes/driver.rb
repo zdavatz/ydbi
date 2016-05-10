@@ -13,7 +13,7 @@ module DBI
             major, minor = dbi_version.split(".").collect { |x| x.to_i }
             dbi_major, dbi_minor = DBI::VERSION.split(".").collect { |x| x.to_i }
             unless major == dbi_major and minor == dbi_minor
-                raise InterfaceError, "Wrong DBD API version used"
+                raise InterfaceError, "Wrong DBD API version used #{major}.#{minor} != dbi #{dbi_major}.#{dbi_minor}"
             end
         end
 

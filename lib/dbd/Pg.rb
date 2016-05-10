@@ -49,7 +49,7 @@ module DBI
         # Only things that extend DBI's results are documented.
         #
         module Pg
-            VERSION          = "0.5.1"
+            VERSION          = "0.5.2"
             DESCRIPTION      = "PostgreSQL DBI DBD"
 
             #
@@ -144,7 +144,7 @@ module DBI
             #
             class Driver < DBI::BaseDriver
                 def initialize
-                    super("0.4.0")
+                    super(DBI::VERSION)
                 end
 
                 ## List of datasources for this database.

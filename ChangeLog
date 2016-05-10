@@ -1,3 +1,7 @@
+## 0.5.2 - 10/05/2016
+
+* update ydbd-pg version to 0.5.2 to avoid an API clash
+
 ## 0.5.1 - 10/05/2016
 
 * dbd-pg gem renamed to ydb-pg which requires gem 'ydbi'
