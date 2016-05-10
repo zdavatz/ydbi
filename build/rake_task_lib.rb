@@ -5,6 +5,7 @@ require 'rubygems/package_task'
 require 'rake/packagetask'
 require 'rdoc/task'
 
+
 DEFAULT_TASKS = [:clobber_package, :package, :gem]
 
 DBD_GEM_DEP_MAP = {
@@ -19,7 +20,7 @@ DBD_GEM_DEP_MAP = {
 #
 
 PACKAGE_FILES = %w(Rakefile build/rake_task_lib.rb setup.rb)
-DOC_FILES  = %w(README LICENSE ChangeLog)
+DOC_FILES  = %w(readme.md LICENSE ChangeLog)
 EXCLUSIONS = %w(test/sql.log)
 DBD_FILES  = %w(test/DBD_TESTS)
 

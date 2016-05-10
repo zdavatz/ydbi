@@ -1,3 +1,8 @@
+== 0.5.0 - 10/05/2016
+
+* Gem renamed to ydbi. Some small changes to run under Ruby 2.x
+* Use "bundler/gem_tasks"in rakefile
+
 == 0.4.0 - 08/23/2008
 
 === Summary

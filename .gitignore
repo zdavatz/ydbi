@@ -1,3 +1,6 @@
-rdoc
-test/sql.log
-*~
+vendor/
+coverage/
+pkg/
+.bundle
+.ruby-version
+Gemfile.lock

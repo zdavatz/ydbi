@@ -2,6 +2,9 @@
     The DBI package is a vendor independent interface for accessing databases.
     It is similar, but not identical to, Perl's DBI module.
 
+    Branch by ywesee.com as our patches never got integrated upstream.
+    The Gem is named ydbi, but internally we still use dbi as name
+
 = Synopsis
 
     require 'dbi'
