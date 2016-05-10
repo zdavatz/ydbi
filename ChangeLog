@@ -1,11 +1,11 @@
-== 0.5.0 - 10/05/2016
+## 0.5.0 - 10/05/2016
 
 * Gem renamed to ydbi. Some small changes to run under Ruby 2.x
 * Use "bundler/gem_tasks"in rakefile
 
-== 0.4.0 - 08/23/2008
+## 0.4.0 - 08/23/2008
 
-=== Summary
+##= Summary
 
 * Type conversion is now universally managed amongst DBDs. Please see
   DBI::Type and DBI::TypeUtil and the DBI::StatementHandle#bind_coltype method.
@@ -1017,9 +1017,9 @@ Date::   Mon Mar 17 08:25:44 2008 -0700
 
      * Reworked Rakefile to gem all supported DBDs and DBI separately
 
-== 0.2.0 - 03/16/2008
+## 0.2.0 - 03/16/2008
 
-=== Summary
+##= Summary
 
 * SQLite (2.x) driver rewritten in ruby
 * SQLite (3.x) driver provided by Jun Mukai
@@ -1128,16 +1128,16 @@ Date::   Sat Feb 23 23:35:19 2008 -0800
 * Initial porting attempt from ruby-postgres to ruby-pg
 * Test fixes and additions
 
-== 0.1.2 - 02-Sep-2006
+## 0.1.2 - 02-Sep-2006
 
-=== General
+##= General
 * Paul DuBois: test/dbi/tc_dbi.rb: DBI version number test failed because it
   was expected to be 0.1.0. (Should have been 0.1.1.) But 0.1.1 has been
   released, so update DBI version number and expected number in test to 0.1.2.
 
-== 0.1.1 - 12-Aug-2006
+## 0.1.1 - 12-Aug-2006
 
-=== General
+##= General
 
 * Paul DuBois: README: Added URLs for the RubyForge DBI project.
 * Patrick May: removed misleading space in setup.rb config example.
@@ -1146,7 +1146,7 @@ Date::   Sat Feb 23 23:35:19 2008 -0800
 * incorporated Matthew Bloch's patch for handling bad timestamps like
   '0000-00-00 00:00:00'
 
-=== MySQL
+##= MySQL
 
 * Paul DuBois: Mysql.rb. Expose additional attributes through Database::func():
   :client_info (String), :client_version (Fixnum), :host_info (String),
@@ -1187,12 +1187,12 @@ Date::   Sat Feb 23 23:35:19 2008 -0800
   enable option files to be read.  This change addresses bug #1951.
 * Paul DuBois: MySQL supports transactions.
 
-=== SQLite
+##= SQLite
 
 * Daniel Berger: Removed hardcoded search paths to search path; Modified
   dir_config name to lower case
 
-== 0.1.0 - 16-Feb-2006
+## 0.1.0 - 16-Feb-2006
 * Project taken over by Kirk Haines, Francis Hwang, Patrick May and Daniel
   Berger as of January, 2006 (with the permission of Michael Neumann).
 * Changelog style changed from diff style to summary style.  If you want diffs,
