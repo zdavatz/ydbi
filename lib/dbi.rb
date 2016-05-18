@@ -57,6 +57,7 @@ require 'dbi/exceptions'
 require 'dbi/binary'
 require 'dbi/handles'
 require 'dbi/base_classes'
+require 'dbi/version'
 require "date"
 require "thread"
 require 'monitor'
