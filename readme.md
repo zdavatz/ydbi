@@ -1,3 +1,9 @@
+# Release a new ydbi gem
+
+* rake ydbd-pg:clobber_package rake ydbd-pg:clobber_package; rake ydbi:gem ydbd-pg:gem
+* gem push ydbd-pg-0.5.4.gem
+* gem push ydbi-0.5.4.gem
+
 # Description
     The DBI package is a vendor independent interface for accessing databases.
     It is similar, but not identical to, Perl's DBI module.
