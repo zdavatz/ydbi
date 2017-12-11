@@ -46,6 +46,7 @@ class DBI::DBD::Pg::Database < DBI::BaseDatabase
 
         hash['options'] ||= nil
         hash['tty'] ||= ''
+        hash['host'] ||= 'localhost'
         hash['port'] = hash['port'].to_i unless hash['port'].nil? 
 
         @connection = PGconn.new(hash['host'], hash['port'], hash['options'], hash['tty'], 
@@ -397,7 +398,7 @@ class DBI::DBD::Pg::Database < DBI::BaseDatabase
                     # punt
                     @type_map[key] = DBI::DBD::Pg::Type::Array.new(DBI::Type::Varchar)
                 end
-            end
+            end unless key.is_a?(Integer)
         end
     end
 

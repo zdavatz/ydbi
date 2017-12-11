@@ -97,7 +97,7 @@ def dbd_gem_spec(dbd, dbd_const, code_files)
     spec.files       = gem_files(code_files) 
     spec.summary     = dbd_description(dbd_const)
     spec.description = dbd_description(dbd_const) 
-    spec.add_dependency 'ydbi', '>= 0.5.0'
+    spec.add_dependency 'ydbi', DBI::VERSION
 
     dcdbd = dbd.downcase
 

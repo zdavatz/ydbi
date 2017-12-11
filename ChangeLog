@@ -1,3 +1,7 @@
+## 0.5.4 - 11/12/2017
+
+* Fix running under PostgreSQL 10.
+
 ## 0.5.3 - 18/05/2016
 
 * Added missing require 'dbi/version' to fix errors when starting yus
