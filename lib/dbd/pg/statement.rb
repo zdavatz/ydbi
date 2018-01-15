@@ -18,7 +18,7 @@ class DBI::DBD::Pg::Statement < DBI::BaseStatement
         @result = nil
         @bindvars = []
         @prepared = false
-    rescue PGError => err
+    rescue PG::Error => err
         raise DBI::ProgrammingError.new(err.message)
     end
 
@@ -58,7 +58,7 @@ class DBI::DBD::Pg::Statement < DBI::BaseStatement
         end
 
         @result = DBI::DBD::Pg::Tuples.new(@db, pg_result)
-    rescue PGError, RuntimeError => err
+    rescue PG::Error, RuntimeError => err
         raise DBI::ProgrammingError.new(err.message)
     end
 

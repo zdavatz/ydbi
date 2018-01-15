@@ -1,3 +1,9 @@
+## 0.5.5 - 15/01/2018
+
+* Update to require pg >= 1.0.0
+* Adapt to change for pg 1.0.0, fixed bundle exec rake test
+* Remove no longer used method quote_array_elements
+
 ## 0.5.4 - 11/12/2017
 
 * Fix running under PostgreSQL 10.

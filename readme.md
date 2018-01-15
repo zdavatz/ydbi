@@ -81,6 +81,15 @@
     gem install dbd-sqlite3
     gem install dbd-sqlite
 
+If you have a non standard path of postgres use something like
+
+    gem install pg -- --with-pg-config=/usr/local/pgsql-10.1/bin/pg_config
+
+Or if you are using bundler
+
+    bundle config build.pg --with-pg-config=/usr/local/pgsql-10.1/bin/pg_config
+    bundle install
+
 ## Without rubygems:
 
     ruby setup.rb config

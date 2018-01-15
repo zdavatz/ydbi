@@ -79,7 +79,7 @@ class DBI::DBD::Pg::Database < DBI::BaseDatabase
 
         self['AutoCommit'] = true    # Postgres starts in unchained mode (AutoCommit=on) by default 
 
-    rescue PGError => err
+    rescue PG::Error => err
         raise DBI::OperationalError.new(err.message)
     end
 
@@ -97,7 +97,7 @@ class DBI::DBD::Pg::Database < DBI::BaseDatabase
         else
             return false
         end
-    rescue PGError
+    rescue PG::Error
         return false
     ensure
         answer.clear if answer
@@ -321,19 +321,6 @@ class DBI::DBD::Pg::Database < DBI::BaseDatabase
 
     private 
 
-    # special quoting if value is element of an array 
-    def quote_array_elements( value )
-        # XXX is this method still being used?
-        case value
-        when Array
-                        '{'+ value.collect{|v| quote_array_elements(v) }.join(',') + '}'
-        when String
-                        '"' + value.gsub(/\\/){ '\\\\' }.gsub(/"/){ '\\"' } + '"'
-        else
-            quote( value ).sub(/^'/,'').sub(/'$/,'') 
-        end
-    end 
-
     def parse_type_name(type_name)
         case type_name
         when 'bool'                      then DBI::Type::Boolean
@@ -427,7 +414,7 @@ class DBI::DBD::Pg::Database < DBI::BaseDatabase
     def __blob_import(file)
         start_transaction unless @in_transaction
         @connection.lo_import(file)
-    rescue PGError => err
+    rescue PG::Error => err
         raise DBI::DatabaseError.new(err.message) 
     end
 
@@ -437,7 +424,7 @@ class DBI::DBD::Pg::Database < DBI::BaseDatabase
     def __blob_export(oid, file)
         start_transaction unless @in_transaction
         @connection.lo_export(oid.to_i, file)
-    rescue PGError => err
+    rescue PG::Error => err
         raise DBI::DatabaseError.new(err.message) 
     end
 
@@ -447,7 +434,7 @@ class DBI::DBD::Pg::Database < DBI::BaseDatabase
     def __blob_create(mode=PGconn::INV_READ)
         start_transaction unless @in_transaction
         @connection.lo_creat(mode)
-    rescue PGError => err
+    rescue PG::Error => err
         raise DBI::DatabaseError.new(err.message) 
     end
 
@@ -457,7 +444,7 @@ class DBI::DBD::Pg::Database < DBI::BaseDatabase
     def __blob_open(oid, mode=PGconn::INV_READ)
         start_transaction unless @in_transaction
         @connection.lo_open(oid.to_i, mode)
-    rescue PGError => err
+    rescue PG::Error => err
         raise DBI::DatabaseError.new(err.message) 
     end
 
@@ -467,7 +454,7 @@ class DBI::DBD::Pg::Database < DBI::BaseDatabase
     def __blob_unlink(oid)
         start_transaction unless @in_transaction
         @connection.lo_unlink(oid.to_i)
-    rescue PGError => err
+    rescue PG::Error => err
         raise DBI::DatabaseError.new(err.message) 
     end
 
@@ -486,7 +473,7 @@ class DBI::DBD::Pg::Database < DBI::BaseDatabase
         # FIXME it doesn't like to close here either.
         # @connection.lo_close(blob)
         data
-    rescue PGError => err
+    rescue PG::Error => err
         raise DBI::DatabaseError.new(err.message) 
     end
 
@@ -502,7 +489,7 @@ class DBI::DBD::Pg::Database < DBI::BaseDatabase
         # up before release.
         # @connection.lo_close(blob)
         return res
-    rescue PGError => err
+    rescue PG::Error => err
         raise DBI::DatabaseError.new(err.message)
     end
 
@@ -511,7 +498,7 @@ class DBI::DBD::Pg::Database < DBI::BaseDatabase
     #
     def __set_notice_processor(proc)
         @connection.set_notice_processor proc
-    rescue PGError => err
+    rescue PG::Error => err
         raise DBI::DatabaseError.new(err.message) 
     end
 end # Database

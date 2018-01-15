@@ -17,6 +17,7 @@ Gem::Specification.new do |gem|
   gem.executables   = ['dbi', 'test_broken_dbi']
   gem.require_paths = ['lib']
  
+  gem.add_dependency "pg", '>= 1.0.0'
   gem.add_development_dependency "rake"
   gem.add_development_dependency "minitest"
   gem.add_development_dependency "test-unit"
