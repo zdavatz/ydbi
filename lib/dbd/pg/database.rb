@@ -49,7 +49,7 @@ class DBI::DBD::Pg::Database < DBI::BaseDatabase
         hash['host'] ||= 'localhost'
         hash['port'] = hash['port'].to_i unless hash['port'].nil? 
 
-        @connection = PGconn.new(hash['host'], hash['port'], hash['options'], hash['tty'], 
+        @connection = PG::Connection.new(hash['host'], hash['port'], hash['options'], hash['tty'],
                                  hash['dbname'] || hash['database'], user, auth)
 
         @exec_method = :exec
@@ -431,7 +431,7 @@ class DBI::DBD::Pg::Database < DBI::BaseDatabase
     #
     # Create a BLOB.
     #
-    def __blob_create(mode=PGconn::INV_READ)
+    def __blob_create(mode=PG::Connection::INV_READ)
         start_transaction unless @in_transaction
         @connection.lo_creat(mode)
     rescue PG::Error => err
@@ -441,7 +441,7 @@ class DBI::DBD::Pg::Database < DBI::BaseDatabase
     #
     # Open a BLOB.
     #
-    def __blob_open(oid, mode=PGconn::INV_READ)
+    def __blob_open(oid, mode=PG::Connection::INV_READ)
         start_transaction unless @in_transaction
         @connection.lo_open(oid.to_i, mode)
     rescue PG::Error => err
@@ -462,7 +462,7 @@ class DBI::DBD::Pg::Database < DBI::BaseDatabase
     # Read a BLOB and return the data.
     #
     def __blob_read(oid, length)
-        blob = @connection.lo_open(oid.to_i, PGconn::INV_READ)
+        blob = @connection.lo_open(oid.to_i, PG::Connection::INV_READ)
 
         if length.nil?
             data = @connection.lo_read(blob)
@@ -482,7 +482,7 @@ class DBI::DBD::Pg::Database < DBI::BaseDatabase
     #
     def __blob_write(oid, value)
         start_transaction unless @in_transaction
-        blob = @connection.lo_open(oid.to_i, PGconn::INV_WRITE)
+        blob = @connection.lo_open(oid.to_i, PG::Connection::INV_WRITE)
         res = @connection.lo_write(blob, value)
         # FIXME not sure why PG doesn't like to close here -- seems to be
         # working but we should make sure it's not eating file descriptors

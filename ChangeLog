@@ -1,3 +1,7 @@
+## 0.5.6 - 27/01/2018
+
+* Replace PGconn by PG::Connection as pg 1.0.0 dropped support for PGcon
+
 ## 0.5.5 - 15/01/2018
 
 * Update to require pg >= 1.0.0

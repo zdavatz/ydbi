@@ -36,7 +36,7 @@ class DBI::DBD::Pg::Statement < DBI::BaseStatement
         # replace DBI::Binary object by oid returned by lo_import
         @bindvars.collect! do |var|
             if var.is_a? DBI::Binary then
-                oid = @db.__blob_create(PGconn::INV_WRITE)
+                oid = @db.__blob_create(PG::Connection::INV_WRITE)
                 @db.__blob_write(oid, var.to_s)
                 oid
             else
