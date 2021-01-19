@@ -9,16 +9,16 @@ module DBI; end
 #
 # Copyright (c) 2001, 2002, 2003 Michael Neumann <mneumann@ntecs.de>
 # Copyright (c) 2008 Erik Hollensbe <erik@hollensbe.org>
-# 
+#
 # All rights reserved.
 #
-# Redistribution and use in source and binary forms, with or without 
-# modification, are permitted provided that the following conditions 
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
 # are met:
-# 1. Redistributions of source code must retain the above copyright 
+# 1. Redistributions of source code must retain the above copyright
 #    notice, this list of conditions and the following disclaimer.
-# 2. Redistributions in binary form must reproduce the above copyright 
-#    notice, this list of conditions and the following disclaimer in the 
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
 #    documentation and/or other materials provided with the distribution.
 # 3. The name of the author may not be used to endorse or promote products
 #    derived from this software without specific prior written permission.
@@ -128,7 +128,7 @@ module DBI
 
     class << self
 
-        # Establish a database connection.  
+        # Establish a database connection.
         #
         # Format goes as such: "dbi:Driver:database_conn_args"
         #
@@ -179,7 +179,7 @@ module DBI
         # Return a list (of String) of the available drivers.
         #
         # NOTE:: This is non-functional for gem installations, due to the
-        #        nature of how it currently works. A better solution for 
+        #        nature of how it currently works. A better solution for
         #        this will be provided in DBI 0.6.0.
         def collect_drivers
             drivers = { }
@@ -204,7 +204,7 @@ module DBI
             drivers = []
             collect_drivers.each do |key, value|
                 drivers.push("dbi:#{key}:")
-            end 
+            end
             return drivers
         end
 
@@ -252,7 +252,7 @@ module DBI
                     rescue LoadError => e1
                         # see if you can find it in the path
                         unless @@caseless_driver_name_map
-                            @@caseless_driver_name_map = { } 
+                            @@caseless_driver_name_map = { }
                             collect_drivers.each do |key, value|
                                 @@caseless_driver_name_map[key.downcase] = value
                             end
@@ -306,17 +306,13 @@ module DBI
                     # FIXME trace
                     # drh.trace(@@trace_mode, @@trace_output)
                     @@driver_map[driver_name] = [drh, dbd_dr]
-                    return driver_name 
+                    return driver_name
                 else
                     return driver_name
                 end
             end
         rescue LoadError, NameError
-            if $SAFE >= 1
-                raise InterfaceError, "Could not load driver (#{$!.message}). Note that in SAFE mode >= 1, driver URLs have to be case sensitive!"
-            else
-                raise InterfaceError, "Could not load driver (#{$!.message})"
-            end
+          raise InterfaceError, "Could not load driver (#{$!.message})"
         end
 
         # Splits a DBI URL into two components - the database driver name
@@ -327,7 +323,7 @@ module DBI
         # the proper format for the URL.  If it isn't correct, an Interface
         # error is raised.
         def parse_url(driver_url)
-            if driver_url =~ /^(DBI|dbi):([^:]+)(:(.*))$/ 
+            if driver_url =~ /^(DBI|dbi):([^:]+)(:(.*))$/
                 [$2, $4]
             else
                 raise InterfaceError, "Invalid Data Source Name"

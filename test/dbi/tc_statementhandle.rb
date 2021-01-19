@@ -1,6 +1,5 @@
-$: << 'lib'
-require 'test/unit'
-require 'dbi'
+require "test/unit"
+require_relative "../../lib/dbi"
 
 class TC_DBI_StatementHandle < Test::Unit::TestCase
     def test_fetch
@@ -9,7 +8,7 @@ class TC_DBI_StatementHandle < Test::Unit::TestCase
         def mock_handle.column_info; {}; end
         def mock_handle.fetch; nil; end
         sth = DBI::StatementHandle.new( mock_handle, true, true, false, true)
-        
+
         10.times do
             assert_nil sth.fetch
         end

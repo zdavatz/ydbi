@@ -1,6 +1,5 @@
-$: << 'lib'
-require 'test/unit'
-require "dbi/sql"
+require "test/unit"
+require_relative "../../lib/dbi/sql"
 
 # ====================================================================
 class TestSqlBind < Test::Unit::TestCase
@@ -60,18 +59,18 @@ class TestSqlBind < Test::Unit::TestCase
   def test_minus_bug
     sql = "SELECT 1 - 3"
     res = "SELECT 1 - 3"
-    assert_equal res, bind(self, sql, []) 
+    assert_equal res, bind(self, sql, [])
   end
 
   def test_minus2
-    sql = "SELECT * from test --Dan's query" 
-    assert_equal sql, bind(self, sql, []) 
+    sql = "SELECT * from test --Dan's query"
+    assert_equal sql, bind(self, sql, [])
   end
 
   def test_slash
     sql = "SELECT 5 / 4"
     res = "SELECT 5 / 4"
-    assert_equal res, bind(self, sql, []) 
+    assert_equal res, bind(self, sql, [])
   end
 
   def test_much

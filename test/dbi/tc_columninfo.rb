@@ -3,17 +3,12 @@
 #
 # Test case for the DBI::ColumnInfo class.
 ############################################################
-$LOAD_PATH.unshift(Dir.pwd)
-$LOAD_PATH.unshift(File.dirname(Dir.pwd))
-$LOAD_PATH.unshift("../../lib")
-$LOAD_PATH.unshift("../../lib/dbi")
-$LOAD_PATH.unshift("lib")
-
-require "dbi/columninfo"
 require "test/unit"
+require_relative "../../lib/dbi/columninfo"
 
 class TC_DBI_ColumnInfo < Test::Unit::TestCase
    def setup
+     super
       @colinfo = DBI::ColumnInfo.new(
          "name"      => "test",
          "sql_type"  => "numeric",
@@ -30,7 +25,7 @@ class TC_DBI_ColumnInfo < Test::Unit::TestCase
          indexed primary unique
       /
    end
-   
+
    def test_constructor
       assert_nothing_raised{ DBI::ColumnInfo.new }
 
@@ -81,7 +76,7 @@ class TC_DBI_ColumnInfo < Test::Unit::TestCase
       assert_respond_to(@colinfo, :keys)
       assert_equal(@keys.sort, @colinfo.keys.collect { |x| x.to_s }.sort)
    end
-   
+
    def test_respond_to_hash_methods
       assert_respond_to(@colinfo, :each)
       assert_respond_to(@colinfo, :empty?)

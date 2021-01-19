@@ -1,11 +1,5 @@
-$LOAD_PATH.unshift(Dir.pwd)
-$LOAD_PATH.unshift(File.dirname(Dir.pwd))
-$LOAD_PATH.unshift("../../lib")
-$LOAD_PATH.unshift("../../lib/dbi")
-$LOAD_PATH.unshift("lib")
-
-require "dbi"
 require "test/unit"
+require_relative "../../lib/dbi"
 
 class MyType
     def initialize(obj)
@@ -107,7 +101,7 @@ class TC_DBI_Type < Test::Unit::TestCase
         # string coercion
         dt = DateTime.now
         assert_equal(dt.to_s, klass.parse(dt).to_s)
-        
+
         t = Time.now
         assert_equal(DateTime.parse(t.to_s).to_s, klass.parse(t).to_s)
 
@@ -137,7 +131,7 @@ class TC_DBI_Type < Test::Unit::TestCase
         )
 
         # precision tests, related to ticket #27182
-      
+
         # iso8601 (bypasses regex)
         [
             '2009-09-27T19:41:00-05:00',
@@ -158,7 +152,7 @@ class TC_DBI_Type < Test::Unit::TestCase
         )
 
         # unix convention (uses regex)
-        
+
         [
             '2009-09-27 19:41:00 -05:00',
             '2009-09-27 19:41:00.123 -05:00'
@@ -208,7 +202,7 @@ class TC_DBI_TypeUtil < Test::Unit::TestCase
         assert_kind_of(String, cast(Time.now))
         assert_kind_of(String, cast(Date.today))
         assert_kind_of(String, cast(DateTime.now))
-      
+
         obj = Time.now
         assert_equal(datecast(obj), cast(obj))
         obj = Date.today

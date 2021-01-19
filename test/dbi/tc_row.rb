@@ -1,16 +1,10 @@
 ######################################################################
 # tc_row.rb
 #
-# Test case for the DBI::Row class. 
+# Test case for the DBI::Row class.
 ######################################################################
-$LOAD_PATH.unshift(Dir.pwd)
-$LOAD_PATH.unshift(File.dirname(Dir.pwd))
-$LOAD_PATH.unshift("../../lib")
-$LOAD_PATH.unshift("../../lib/dbi")
-$LOAD_PATH.unshift("lib")
-
-require 'test/unit'
-require 'dbi'
+require "test/unit"
+require_relative "../../lib/dbi"
 
 class TC_DBI_Row < Test::Unit::TestCase
    def setup
@@ -18,7 +12,7 @@ class TC_DBI_Row < Test::Unit::TestCase
       @cols = %w/first last age/
       @coltypes = [DBI::Type::Varchar, DBI::Type::Varchar, DBI::Type::Integer]
       @row  = DBI::Row.new(@cols, @coltypes, @data.clone)
-      @row_noconv = DBI::Row.new(@cols, @coltypes, @data.clone, false) 
+      @row_noconv = DBI::Row.new(@cols, @coltypes, @data.clone, false)
    end
 
    def teardown
@@ -46,7 +40,7 @@ class TC_DBI_Row < Test::Unit::TestCase
            assert_equal(@data, @row_noconv)
        end
    end
-   
+
    # Ensure that constructor only allows Integers or Arrays (or nil)
    def test_row_constructor
       assert_nothing_raised{ DBI::Row.new(@cols, @coltypes) }
@@ -67,14 +61,14 @@ class TC_DBI_Row < Test::Unit::TestCase
       assert_equal(@data[2].to_s, @row.at(2).to_s)
       assert_equal(@data[99].to_s, @row.at(99).to_s)
    end
-   
+
    # Should respond to Array and Enumerable methods
    def test_row_delegate
       assert_respond_to(@row, :length)
       assert_respond_to(@row, :each)
       assert_respond_to(@row, :grep)
    end
-   
+
    def test_row_length
       assert_equal(3, @row.length)
       assert_equal(3, DBI::Row.new(@cols, @coltypes).length)
@@ -86,14 +80,14 @@ class TC_DBI_Row < Test::Unit::TestCase
       assert_equal(@data[2], @row.by_index(2).to_s)
       assert_nil(@row.by_index(3))
    end
-   
+
    def test_row_data_by_field
       assert_equal @data[0], @row.by_field('first')
       assert_equal @data[1], @row.by_field('last')
       assert_equal @data[2], @row.by_field('age').to_s
       assert_equal nil, @row.by_field('unknown')
    end
-   
+
    def test_row_set_values
       assert_respond_to(@row, :set_values)
       assert_nothing_raised{ @row.set_values(["John", "Doe", 23]) }
@@ -101,14 +95,14 @@ class TC_DBI_Row < Test::Unit::TestCase
       assert_equal("Doe", @row.by_index(1))
       assert_equal(23, @row.by_index(2))
    end
-   
+
    def test_row_to_h
       assert_respond_to(@row, :to_h)
       assert_nothing_raised{ @row.to_h }
       assert_kind_of(Hash, @row.to_h)
       assert_equal({"first"=>"Daniel", "last"=>"Berger", "age"=>36}, @row.to_h)
    end
-   
+
    def test_row_column_names
       assert_respond_to(@row, :column_names)
       assert_nothing_raised{ @row.column_names }
@@ -123,13 +117,13 @@ class TC_DBI_Row < Test::Unit::TestCase
       assert_kind_of(Array, @row.column_names)
       assert_equal(["first", "last", "age"], @row.column_names)
    end
-   
+
    def test_indexing_numeric
-      assert_equal(@data[0], @row[0])   
-      assert_equal(@data[1], @row[1])  
-      assert_equal(@data[2], @row[2].to_s)      
+      assert_equal(@data[0], @row[0])
+      assert_equal(@data[1], @row[1])
+      assert_equal(@data[2], @row[2].to_s)
    end
-   
+
    def test_indexing_string_or_symbol
       assert_equal(@data[0], @row['first'])
       assert_equal(@data[0], @row[:first])
@@ -137,7 +131,7 @@ class TC_DBI_Row < Test::Unit::TestCase
       assert_equal(@data[2], @row['age'].to_s)
       assert_equal(nil, @row['unknown'])
    end
-   
+
    def test_indexing_regexp
       assert_equal(["Daniel"], @row[/first/])
       assert_equal(["Berger"], @row[/last/])
