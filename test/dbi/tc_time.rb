@@ -3,14 +3,8 @@
 #
 # Test case for the DBI::Time class (currently) located in the utils.rb file.
 ##############################################################################
-$LOAD_PATH.unshift(Dir.pwd)
-$LOAD_PATH.unshift(File.dirname(Dir.pwd))
-$LOAD_PATH.unshift("../../lib")
-$LOAD_PATH.unshift("../../lib/dbi")
-$LOAD_PATH.unshift("lib")
-
-require 'dbi'
-require 'test/unit'
+require "test/unit"
+require_relative "../../lib/dbi"
 
 Deprecate.set_action(proc { })
 

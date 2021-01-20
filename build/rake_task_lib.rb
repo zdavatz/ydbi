@@ -55,12 +55,11 @@ def build_package_tasks(spec, code_files)
 end
 
 def boilerplate_spec
-    gem = Gem::Specification.new 
+    gem = Gem::Specification.new
     gem.authors     = ['Erik Hollensbe', 'Christopher Maujean']
     gem.email       = 'zdavatz@ywesee.com'
     gem.homepage    = 'https://github.com/zdavatz/ydbi'
     gem.platform    = Gem::Platform::RUBY
-    gem.has_rdoc    = true
     gem.extra_rdoc_files = DOC_FILES
     gem.required_ruby_version = '>= 1.8.0'
     gem.rubyforge_project = 'ydbi'
@@ -74,9 +73,9 @@ end
 
 def dbd_code_files(dbd)
     code_files = [
-                "test/dbd/general/**", 
-                File.join("test", "dbd", dbd.downcase == "pg" ? "postgresql" : dbd.downcase, "*"), 
-                File.join("lib", "dbd", dbd + ".rb"), 
+                "test/dbd/general/**",
+                File.join("test", "dbd", dbd.downcase == "pg" ? "postgresql" : dbd.downcase, "*"),
+                File.join("lib", "dbd", dbd + ".rb"),
                 "lib/dbd/#{dbd.downcase}/*.rb",
     ] + DBD_FILES
 end
@@ -94,9 +93,9 @@ def dbd_gem_spec(dbd, dbd_const, code_files)
     spec.name        = dbd_namespace(dbd)
     spec.version     = dbd_version(dbd_const)
     spec.test_file   = 'test/ts_dbd.rb'
-    spec.files       = gem_files(code_files) 
+    spec.files       = gem_files(code_files)
     spec.summary     = dbd_description(dbd_const)
-    spec.description = dbd_description(dbd_const) 
+    spec.description = dbd_description(dbd_const)
     spec.add_dependency 'ydbi', DBI::VERSION
 
     dcdbd = dbd.downcase
@@ -133,7 +132,7 @@ def build_dbd_tasks(dbd)
 
         abort "No DBD found even though we asked to make tasks for it" unless done
 
-        code_files = dbd_code_files(dbd_const) 
+        code_files = dbd_code_files(dbd_const)
 
         spec = dbd_gem_spec(dbd, dbd_const, code_files)
 

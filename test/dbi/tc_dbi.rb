@@ -3,14 +3,8 @@
 #
 # Test case for the DBI module (dbi.rb).
 ######################################################################
-$LOAD_PATH.unshift(Dir.pwd)
-$LOAD_PATH.unshift(File.dirname(Dir.pwd))
-$LOAD_PATH.unshift("../../lib")
-$LOAD_PATH.unshift("../../lib/dbi")
-$LOAD_PATH.unshift("lib")
-
-require 'dbi'
-require 'test/unit'
+require "test/unit"
+require_relative "../../lib/dbi"
 
 class TC_DBI < Test::Unit::TestCase
     def setup
@@ -22,7 +16,7 @@ class TC_DBI < Test::Unit::TestCase
     end
 
     def test_dbi_version
-        assert_equal("0.5.5", DBI::VERSION)
+        assert_equal("0.5.7", DBI::VERSION)
     end
 
     def test_dbd_module

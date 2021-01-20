@@ -4,17 +4,8 @@
 # Test case for the DBI::Timestamp class (currently) located in the
 # utils.rb file.
 ##############################################################################
-$LOAD_PATH.unshift(Dir.pwd)
-$LOAD_PATH.unshift(File.dirname(Dir.pwd))
-$LOAD_PATH.unshift("../../lib")
-$LOAD_PATH.unshift("../../lib/dbi")
-$LOAD_PATH.unshift("lib")
-
-require 'date'
-require 'dbi'
-require 'test/unit'
-
-Deprecate.set_action(proc { })
+require "test/unit"
+require_relative "../../lib/dbi"
 
 class TC_DBI_Date < Test::Unit::TestCase
    def setup
@@ -134,9 +125,4 @@ class TC_DBI_Date < Test::Unit::TestCase
       assert_equal(2006, @dbi_ts.year)
    end
 
-   def teardown
-      @date = nil
-      @time = nil
-      @dbi_ts = nil
-   end
 end

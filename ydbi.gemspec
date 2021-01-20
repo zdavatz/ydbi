@@ -10,16 +10,14 @@ Gem::Specification.new do |gem|
   gem.homepage      = 'https://github.com/zdavatz/ydbi'
   gem.summary       = 'A vendor independent interface for accessing databases, similar to Perl\'s DBI'
   gem.description   = 'Branch by ywesee com, as our patches were never accepted by upstream'
-  gem.has_rdoc      = true
   gem.licenses      = ['MIT']
   gem.files         = `git ls-files`.split($/)
   gem.test_file     = 'test/ts_dbi.rb'
   gem.executables   = ['dbi', 'test_broken_dbi']
   gem.require_paths = ['lib']
- 
+
   gem.add_dependency "pg", '>= 1.0.0'
   gem.add_development_dependency "rake"
-  gem.add_development_dependency "minitest"
   gem.add_development_dependency "test-unit"
   gem.add_runtime_dependency 'deprecated', '= 2.0.1'
 end
