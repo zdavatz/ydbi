@@ -7,3 +7,4 @@ elsif File.exists? 'lib/dbd'
 else
     abort "Well, this is odd; No DBI or DBD found."
 end
+require 'bundler/gem_tasks'
