@@ -45,7 +45,7 @@ class DBI::DBD::Pg::Database < DBI::BaseDatabase
         end
 
         hash['options'] ||= nil
-        hash['tty'] ||= ''
+        hash['tty'] = nil
         hash['host'] ||= 'localhost'
         hash['port'] = hash['port'].to_i unless hash['port'].nil? 
 
