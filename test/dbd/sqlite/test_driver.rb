@@ -55,7 +55,7 @@ class TestSQLiteDriver < DBDConfig.testbase(:sqlite)
         assert_equal 0, dbh.instance_variable_get("@open_handles")
         assert_kind_of SQLite::Database, dbh.instance_variable_get("@db")
 
-        assert File.exists?(config['dbname'])
+        assert File.exist?(config['dbname'])
     end
 
     def setup

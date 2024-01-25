@@ -1,6 +1,10 @@
 ## 0.5.9 - 15/12/2022
 * fix issue with tty, see https://github.com/zdavatz/oddb.org/issues/183
 
+## 0.5.8 - 11/03/2021
+
+* removed fixed dependency to pg (is now optional like mysql)
+
 ## 0.5.7 - 18/01/2021
 
 * Fixed and cleaned Unit Tests
