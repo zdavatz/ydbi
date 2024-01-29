@@ -78,7 +78,8 @@ module DBI
                                         # in strings, escapes are doubled and the quotes are different.
                                         # this gets *really* ugly and needs to be well-tested
                                         "\"#{generated.gsub(/\\/) { "\\\\" }}\""
-                                    when Fixnum
+                        # Since Ruby 2.4 Fixnum was deprecated, see https://bugs.ruby-lang.org/issues/12005
+                                    when Integer
                                         generated.to_s
                                     end
                         output += generated

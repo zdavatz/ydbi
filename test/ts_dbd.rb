@@ -2,14 +2,13 @@ require 'rubygems'
 gem 'test-unit'
 # figure out what tests to run
 require 'yaml'
-require 'test/unit/testsuite'
+require "test/unit"
 require 'test/unit/ui/console/testrunner'
 
-if File.basename(Dir.pwd) == "test"
-    $:.unshift('../lib')
-else
-    $:.unshift('lib')
-end
+Dir.chdir("..") if File.basename(Dir.pwd) == "test"
+$LOAD_PATH.unshift(Dir.pwd + "/lib")
+Dir.chdir("test") rescue nil
+$: << '.'
 
 module Test::Unit::Assertions
     def build_message(head, template=nil, *arguments)
@@ -35,14 +34,20 @@ module DBDConfig
 
     def self.get_config
         config = nil
-
-        begin
-            config = YAML.load_file(File.join(ENV["HOME"], ".ruby-dbi.test-config.yaml"))
-        rescue Exception => e
+        if false
+            # ydbi is only interested in testing the postgresql database!!
+            begin
+                config = YAML.load_file(File.join(ENV["HOME"], ".ruby-dbi.test-config.yaml"))
+            rescue Exception => e
+                config = { }
+                config["dbtypes"] = [ ]
+            end
+        else
+            # please keep the definitions in sync between test/ts_dbd.rb and devenv.nix!
             config = { }
-            config["dbtypes"] = [ ]
+            config["dbtypes"] = [ "postgresql" ]
+            config["postgresql"] = {"username"=>"ydbi_pg", "password"=>nil, "dbname"=>"ydbi_pg"}
         end
-
         return config
     end
 
@@ -114,7 +119,7 @@ if __FILE__ == $0
     if config and config["dbtypes"]
         config["dbtypes"].each do |dbtype|
             unless config[dbtype]
-                warn "#{dbtype} is selected for testing but not configured; see test/DBD_TESTS"
+                warn "#{dbtype} is selected for testing but not configured; see test/DBD_TESTS" if false
                 next
             end
 

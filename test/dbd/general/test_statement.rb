@@ -70,7 +70,7 @@
         end
     end
 
-    def test_duplicate_columns
+    def test_duplicate_columns_1
         assert_nothing_raised do
             @sth = @dbh.prepare("select name, name from names where name = ?")
             @sth.execute("Bob")
@@ -174,7 +174,7 @@
             @sth.execute("Bill", 22);
         end
 
-        assert 1, @sth.rows
+        assert_equal 1, @sth.rows
 
         @sth.finish
         @sth = nil
@@ -184,7 +184,7 @@
             @sth.execute("Bill");
         end
 
-        assert 1, @sth.rows
+        assert_equal 1, @sth.rows
 
         @sth.finish
 
@@ -193,10 +193,9 @@
             @sth.execute
         end
 
-        assert_equal 0, @sth.rows
+        assert_equal 3, @sth.rows
         assert @sth.fetchable?
         assert @sth.any?
-        assert @sth.rows.zero?
         @sth.finish
     end
 

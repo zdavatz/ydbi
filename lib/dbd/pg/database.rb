@@ -151,10 +151,14 @@ class DBI::DBD::Pg::Database < DBI::BaseDatabase
 
         # by Michael Neumann (get default value)
         # corrected by Joseph McDonald
+        # from https://www.postgresql.org/docs/12/release-12.html
+        # Remove obsolete pg_attrdef.adsrc column (Peter Eisentraut)
+        # This column has been deprecated for a long time, because it did not update in response to other catalog changes (such as column renamings). The # # recommended way to get a text version of a default-value expression from pg_attrdef is pg_get_expr(adbin, adrelid).
+
         sql3 = %[
-            SELECT pg_attrdef.adsrc, pg_attribute.attname 
+            SELECT pg_get_expr(pg_attrdef.adbin, pg_attrdef.adrelid), pg_attribute.attname
             FROM pg_attribute, pg_attrdef, pg_catalog.pg_class
-            WHERE pg_catalog.pg_class.relname = ? AND 
+            WHERE pg_catalog.pg_class.relname = ? AND
             pg_attribute.attrelid = pg_catalog.pg_class.oid AND
                           pg_attrdef.adrelid = pg_catalog.pg_class.oid AND
                           pg_attrdef.adnum = pg_attribute.attnum

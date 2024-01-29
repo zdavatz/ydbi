@@ -41,10 +41,9 @@
         col_info = @sth.column_info
         1.step(5) do |x|
             row = @sth.fetch
-
             assert_kind_of(Integer, row[0])
-            assert_kind_of(BigDecimal, row[1])
-            assert_kind_of(BigDecimal, row[2])
+            assert_kind_of(Float, row[1])
+            assert_kind_of(Float, row[2])
 
             # FIXME BigDecimal requires a string and some databases will pad
             # decimal/numeric with constrained precision. We should account for

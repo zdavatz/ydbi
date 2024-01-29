@@ -17,6 +17,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
 
   gem.add_dependency "pg", '>= 1.0.0'
+  gem.add_dependency "bigdecimal"
   gem.add_development_dependency "rake"
   gem.add_development_dependency "test-unit"
   gem.add_runtime_dependency 'deprecated', '= 2.0.1'

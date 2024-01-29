@@ -10,9 +10,9 @@ DEFAULT_TASKS = [:clobber_package, :package, :gem]
 
 DBD_GEM_DEP_MAP = {
     'pg'      => 'pg',
-    'mysql'   => 'mysql',
-    'sqlite'  => 'sqlite-ruby',
-    'sqlite3' => 'sqlite3-ruby'
+#    'mysql'   => 'mysql',
+#    'sqlite'  => 'sqlite-ruby',
+#    'sqlite3' => 'sqlite3-ruby'
 }
 
 #
