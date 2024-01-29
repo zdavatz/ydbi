@@ -46,7 +46,7 @@ module DBDConfig
             # please keep the definitions in sync between test/ts_dbd.rb and devenv.nix!
             config = { }
             config["dbtypes"] = [ "postgresql" ]
-            config["postgresql"] = {"username"=>"ydbi_pg", "password"=>nil, "dbname"=>"ydbi_pg"}
+            config["postgresql"] = {"username"=>"ydbi_pg", "password"=>"pg_password", "dbname"=>"ydbi_pg"}
         end
         return config
     end
