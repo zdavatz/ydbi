@@ -15,6 +15,7 @@ Gem::Specification.new do |gem|
   gem.test_file     = 'test/ts_dbi.rb'
   gem.executables   = ['dbi', 'test_broken_dbi']
   gem.require_paths = ['lib']
+  gem.metadata["changelog_uri"] = gem.homepage + "/blob/master/ChangeLog"
 
   gem.add_dependency "pg", '>= 1.0.0'
   gem.add_dependency "bigdecimal"
