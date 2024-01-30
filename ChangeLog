@@ -1,3 +1,8 @@
+## 0.6.0 - 30/01/2024
+* fix running under postgresql 12 and later
+* run tests for ydbi-pg via test/dbd/postgresql and add them to the github workflow
+* Added support for https://devenv.sh
+
 ## 0.5.9 - 15/12/2022
 * fix issue with tty, see https://github.com/zdavatz/oddb.org/issues/183
 
