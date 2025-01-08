@@ -22,7 +22,7 @@
   # https://devenv.sh/pre-commit-hooks/
   # pre-commit.hooks.shellcheck.enable = true;
   # uncomment one of the following to lines to define the ruby version
-  languages.ruby.versionFile = ./.ruby-version;
+  languages.ruby.version = "3.4";
   # languages.ruby.package = pkgs.ruby_3_2;
 
   services.postgres = {
